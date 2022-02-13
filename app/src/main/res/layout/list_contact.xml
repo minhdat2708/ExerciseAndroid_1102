@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <CheckBox
+        android:id="@+id/ckbDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtName"
+        android:text="Họ tên"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/ckbDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/txtPhone"
+        android:text="Số điện thoại"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/ckbDelete"
+        android:layout_below="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
