@@ -58,12 +58,11 @@ public class MainActivity extends AppCompatActivity {
                 for (Contacts contacts: arrContacts) {
                     adapter.notifyDataSetChanged();
                 }
-                Toast.makeText(MainActivity.this, "Sort", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Đã sắp xếp theo họ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mnuAdd:
                 //TODO
                 Intent intent = new Intent(MainActivity.this, AddContact.class);
-
                 startActivityForResult(intent, 100);
                 break;
         }
@@ -82,13 +81,21 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         //Lấy dữ liệu từ NewContact gửi về
         Bundle bundle = data.getExtras();
-        int id = bundle.getInt("ID");
+        int id = bundle.getInt("Id");
         String name = bundle.getString("Name");
         String phone = bundle.getString("Phone");
         if (requestCode == 100 && resultCode == 200) {
             //Đặt vào listdata
             arrContacts.add(new Contacts(id, name, phone, false));
             adapter.notifyDataSetChanged();
+        }
+        if (resultCode == 201) {
+            if (id == arrContacts.get(positionSelected).getId()) {
+                arrContacts.get(positionSelected).setName(name);
+                arrContacts.get(positionSelected).setPhoneNumber(phone);
+                arrContacts.get(positionSelected).setStatus(false);
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 
@@ -99,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 //Tạo đối tượng Intent để gọi tới AddContact
                 Intent intent = new Intent(MainActivity.this, AddContact.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("ID", arrContacts.get(positionSelected).getId());
+                bundle.putInt("Id", arrContacts.get(positionSelected).getId());
                 bundle.putString("Name", arrContacts.get(positionSelected).getName());
                 bundle.putString("Phone", arrContacts.get(positionSelected).getPhoneNumber());
                 intent.putExtras(bundle);
@@ -126,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
 
         registerForContextMenu(lstContact);
 
-        arrContacts.add(new Contacts(1, "Lê Minh Đạt", "0965325125", false));
+        arrContacts.add(new Contacts(0, "Lê Minh Đạt", "0965325125", false));
         arrContacts.add(new Contacts(1, "Phạm Tiến Anh", "0965325125", false));
-        arrContacts.add(new Contacts(1, "Phạm Tiến Hải", "0965325125", false));
-        arrContacts.add(new Contacts(1, "Nguyễn Xuân Bách", "0965325125", false));
-        arrContacts.add(new Contacts(1, "Nguyễn Thị Thuỷ", "0965325125", false));
+        arrContacts.add(new Contacts(2, "Phạm Tiến Hải", "0965325125", false));
+        arrContacts.add(new Contacts(3, "Nguyễn Xuân Bách", "0965325125", false));
+        arrContacts.add(new Contacts(4, "Nguyễn Thị Thuỷ", "0965325125", false));
 
         adapter = new MyAdapter(MainActivity.this, arrContacts, new MyAdapter.onClick() {
             @Override

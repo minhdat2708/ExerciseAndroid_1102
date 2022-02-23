@@ -27,7 +27,7 @@ public class AddContact extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle!= null) {
-            int id = bundle.getInt("ID");
+            int id = bundle.getInt("Id");
             String name = bundle.getString("Name");
             String phone = bundle.getString("Phone");
             edtID.setText(String.valueOf(id));
@@ -46,7 +46,7 @@ public class AddContact extends AppCompatActivity {
 
                 //bundle hoạt động như một Java Map các phần tử phân biệt theo key
                 //bundle có các hàng put.. trong đó ... là kiểu dữ liệu tương ứng
-                bundle.putInt("ID", Integer.parseInt(edtID.getText().toString()));
+                bundle.putInt("Id", Integer.parseInt(edtID.getText().toString()));
                 bundle.putString("Name", edtName.getText().toString());
                 bundle.putString("Phone", edtPhone.getText().toString());
                 //có thể đặt cả đối tượng lên bundle bằng hàm putSerilizable
