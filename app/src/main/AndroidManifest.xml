@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaiTapVanDung_1102">
         <activity
-            android:label="Bài tập vận dụng"
+            android:name=".AddContact"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="Bài tập vận dụng">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

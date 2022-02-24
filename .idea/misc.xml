@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/layout/activity_add_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/layout/list_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/menu/contextmenuitem.xml" value="0.36666666666666664" />
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/ExerciseAndroid_1102/app/src/main/res/menu/menuitem.xml" value="0.36666666666666664" />
         <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Code/AndroidStudioProject/BaiTapVanDung_1102/app/src/main/res/layout/list_contact.xml" value="0.2957427536231884" />
       </map>
