@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         lstContact = findViewById(R.id.lsvContact);
         ckbDelete = findViewById(R.id.ckbDelete);
         btnDelete = findViewById(R.id.btnDelete);
+        btnAdd = findViewById(R.id.btnAdd);
         arrContacts = new ArrayList<>();
         arrSelected = new ArrayList<>();
 
@@ -181,6 +182,14 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Vui lòng chọn liên lạc muốn xoá!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, AddContact.class);
+                startActivityForResult(intent, 100);
             }
         });
 

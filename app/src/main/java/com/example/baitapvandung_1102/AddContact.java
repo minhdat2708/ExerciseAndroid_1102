@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddContact extends AppCompatActivity {
 
@@ -26,7 +27,7 @@ public class AddContact extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if (bundle!= null) {
+        if (bundle != null) {
             int id = bundle.getInt("Id");
             String name = bundle.getString("Name");
             String phone = bundle.getString("Phone");
@@ -39,30 +40,39 @@ public class AddContact extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Tạo Intent trở về MainActivity
-                Intent intent = new Intent();
-                //Tạo bundle là đối tượng chứa dữ liệu
-                Bundle bundle = new Bundle();
+                String name = edtName.getText().toString();
+                String phone = edtPhone.getText().toString();
+                String id = edtID.getText().toString();
 
-                //bundle hoạt động như một Java Map các phần tử phân biệt theo key
-                //bundle có các hàng put.. trong đó ... là kiểu dữ liệu tương ứng
-                bundle.putInt("Id", Integer.parseInt(edtID.getText().toString()));
-                bundle.putString("Name", edtName.getText().toString());
-                bundle.putString("Phone", edtPhone.getText().toString());
-                //có thể đặt cả đối tượng lên bundle bằng hàm putSerilizable
-                //đặt bundle lên intent
-                intent.putExtras(bundle);
-                //trả về bằng hàm setResult
-                //tham số thứ nhất là resultCode để quản lý phiên
-                //tham số thứ hai là intent chứa dữ liệu gửi về
-                setResult(200, intent);
-                if (btnAdd.getText() == "Edit") {
-                    setResult(201, intent);
+                if (name.isEmpty() || phone.isEmpty() || id.isEmpty()) {
+                    Toast.makeText(AddContact.this, "Vui lòng nhập đủ thông tin người dùng!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(AddContact.this, id , Toast.LENGTH_SHORT).show();
+                } else {
 
+                    //Tạo Intent trở về MainActivity
+                    Intent intent = new Intent();
+                    //Tạo bundle là đối tượng chứa dữ liệu
+                    Bundle bundle = new Bundle();
+
+                    //bundle hoạt động như một Java Map các phần tử phân biệt theo key
+                    //bundle có các hàng put.. trong đó ... là kiểu dữ liệu tương ứng
+                    bundle.putInt("Id", Integer.parseInt(edtID.getText().toString()));
+                    bundle.putString("Name", edtName.getText().toString());
+                    bundle.putString("Phone", edtPhone.getText().toString());
+                    //có thể đặt cả đối tượng lên bundle bằng hàm putSerilizable
+                    //đặt bundle lên intent
+                    intent.putExtras(bundle);
+                    //trả về bằng hàm setResult
+                    //tham số thứ nhất là resultCode để quản lý phiên
+                    //tham số thứ hai là intent chứa dữ liệu gửi về
+                    setResult(200, intent);
+                    if (btnAdd.getText() == "Edit") {
+                        setResult(201, intent);
+
+                    }
+                    finish();
                 }
-                finish();
             }
         });
-
     }
 }

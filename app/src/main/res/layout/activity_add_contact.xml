@@ -43,6 +43,7 @@
         android:id="@+id/edtPhone"
         android:hint="Phone"
         android:layout_below="@+id/txtPhone"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
