@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         String phone = bundle.getString("Phone");
         if (requestCode == 100 && resultCode == 200) {
             //Đặt vào listdata
+            Toast.makeText(this, "abc", Toast.LENGTH_SHORT).show();
             arrContacts.add(new Contacts(id, name, phone, false));
             adapter.notifyDataSetChanged();
         }
