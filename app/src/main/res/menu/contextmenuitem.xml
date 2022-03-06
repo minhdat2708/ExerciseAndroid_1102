@@ -6,4 +6,7 @@
     <item
         android:id="@+id/mnuDelete"
         android:title="Delete"/>
+    <item
+        android:id="@+id/mnuCall"
+        android:title="Call"/>
 </menu>

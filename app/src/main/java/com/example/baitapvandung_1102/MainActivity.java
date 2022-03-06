@@ -6,8 +6,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,6 +25,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,6 +35,7 @@ import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView txtPhone;
     EditText edtName;
     ListView lstContact;
     ArrayList<Contacts> arrContacts;
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnAdd, btnDelete;
 
     int positionSelected = -1;
+
+    String telephone;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,6 +122,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mnuDelete:
                 //TODO
                 break;
+            case R.id.mnuCall:
+                //TODO
+                Toast.makeText(MainActivity.this, telephone, Toast.LENGTH_SHORT).show();
+//                Intent intentCall = new Intent(Intent.ACTION_CALL, Uri.parse("tel: " + telephone));
+//                try {
+//                    startActivity(intentCall);
+//                } catch (ActivityNotFoundException ex) {
+//
+//                }
+                Intent intentMessage = new Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:" + telephone));
+                intentMessage.putExtra("sms_body", arrContacts.get(positionSelected).getName());
+                startActivity(intentMessage);
+                break;
         }
         return super.onContextItemSelected(item);
     }
@@ -130,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         ckbDelete = findViewById(R.id.ckbDelete);
         btnDelete = findViewById(R.id.btnDelete);
         btnAdd = findViewById(R.id.btnAdd);
+        txtPhone = findViewById(R.id.txtPhone);
         arrContacts = new ArrayList<>();
         arrSelected = new ArrayList<>();
 
@@ -216,11 +236,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 positionSelected = i;
+                telephone = arrContacts.get(positionSelected).getPhoneNumber();
                 return false;
             }
         });
-
-
     }
 
 //    public void onDeleteClick(Object position) {
